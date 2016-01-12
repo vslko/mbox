@@ -1,0 +1,148 @@
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<link rel="stylesheet" type="text/css" href="./css/mbox.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="mbox.js"></script>
+<script type="text/javascript">
+
+$(document).ready( function(){
+
+	$('div#my-window').mBox({		icon		: './img/user.png',
+		caption		: 'Example window',
+		lockText	: 'Please wait..',
+		collapsable	: true,
+		collapsed	: false,
+		draggable	: true,
+		onExpand	: function() { },
+		onCollapse	: function() { }
+	});
+
+	$('input[name="win-title"]').on('keyup', function() { $('div#my-window').mBox('caption', $(this).val()); });
+	$('img[name="win-icon"]').on('click', function(){ $('div#my-window').mBox('icon', $(this).attr('src') ); });
+	$('button[name="win-collapse"]').on('click', function(){ $('div#my-window').mBox('collapse'); });
+	$('button[name="win-lock"]').on('click', function(){
+		$('div#my-window').mBox('lock');
+		setTimeout( function() { $('div#my-window').mBox('unlock'); }, 3000);
+	});
+
+});
+
+</script>
+
+<style type="text/css">
+  body { background-color:#F5F5F5; font-size: 12px; font-family: Tahoma; color: #555; margin: 24px; }
+  .section { background: none repeat scroll 0 0 #FFFFFF; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); margin-bottom: 27px; padding: 20px; line-height: 18px; }
+  ul.section { padding-left: 32px; }
+  .section-title { font-size: 20px;line-height: 22px;margin-bottom: 10px;margin-top: 10px;font-weight: normal;}
+  .in-section-title {font-size: 18px;line-height: 20px;margin-bottom: 8px;font-weight: normal;}
+  pre {background-color: #FAFAFA;border: 1px solid #CCCCCC;color: #000000;font-size: 11px;padding: 4px;}
+  a {color: #006096;text-decoration:none;font-weight: bold; }
+  a:hover { text-decaration: underline; }
+  .definition { display: inline-block; font-family: monospace;font-size: 15px;color: #0070A6;}
+  .typization { margin-left: 30px; font-style: italic; }
+  .description {display:block;margin-bottom: 20px; margin-left: 10px;}
+</style>
+
+<head>
+<title>MantellaBox</title>
+</head>
+<body>
+
+<div class="section-title">MantellaBox demo</div>
+<div class="section" style="height: 220px;">
+	<div id="my-window" style="width:400px;">
+		<span style="display:inline-block; width: 100px;">Change caption:</span> <input name="win-title" type="text" style="width:100px;"></br>
+		<span style="display:inline-block; width: 100px;">Change icon:</span><img name="win-icon" src="./img/user.png"><img name="win-icon" src="./img/weather.png"><img name="win-icon" src="./img/exclamation.png"><img name="win-icon" src="./img/world.png"></br>
+		<span style="display:inline-block; width: 100px;">Collapse window:</span> <button name="win-collapse">collapse</button><br>
+        <span style="display:inline-block; width: 100px;">Lock window:</span> <button name="win-lock">3 sec. lock</button>
+		<hr size="1" color="#aaa">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+		labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+		nisi ut aliquip ex ea commodo consequat.
+	</div>
+</div>
+
+<div class="section-title">Features</div>
+<ul class="section">
+    <li>Window-style block of content</li>
+    <li>Realtime caption change</li>
+    <li>Realtime icon on caption change</li>
+    <li>Content lock support</li>
+    <li>Collapse/expand support</li>
+    <li>Collapse/expand event callbacks</li>
+    <li>Drag and Drop support</li>
+</ul>
+
+<div class="section-title">Getting started</div>
+<div class="section">
+	<div class="in-section-title">Insert in head</div>
+	<pre>&lt;!-- basic style --&gt;
+&lt;link rel="stylesheet" type="text/css" href="your_path/css/mbox.css" /&gt;
+&lt;!-- required javascripts --&gt;
+&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="your_path/js/mbox.js"&gt;&lt;/script&gt;</pre>
+	<div class="in-section-title">Insert in body</div>
+	<pre>&lt;div id="my-window" style="width:400px;"&gt; window content &lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+$(document).ready( function(){
+	$('#my-window').mBox({
+		icon		: './img/icon.png',
+		caption		: 'My window',
+		lockText	: 'Please wait..',
+		collapsable	: true,
+		collapsed	: false,
+		draggable	: true,
+		onExpand	: function() { },
+		onCollapse	: function() { }
+	});
+});
+&lt;/script&gt;</pre>
+
+</div>
+
+<div class="section-title">Documentation</div>
+<div class="section">
+
+	<div class="in-section-title">Options</div>
+	<span class="definition">icon</span><span class="typization">Type: string, Default: null</span>
+	<span class="description">Path to icon image in title of window.</span>
+	<span class="definition">caption</span><span class="typization">Type: string, Default: " "</span>
+	<span class="description">Text in caption of header.</span>
+	<span class="definition">lockText</span><span class="typization">Type: string, Default: "Please wait.."</span>
+	<span class="description">Information message on lock.</span>
+	<span class="definition">collapsable</span><span class="typization">Type: boolean, Default: false</span>
+	<span class="description">True if collapse/expand features are enabled.</span>
+	<span class="definition">collapsed</span><span class="typization">Type: boolean, Default: false</span>
+	<span class="description">True if window is in collapsed state on init</span>
+	<span class="definition">draggable</span><span class="typization">Type: boolean, Default: false</span>
+	<span class="description">True if dragAndDrop features are enabled.</span>
+
+	<div class="in-section-title">Methods</div>
+	<span class="definition">object.mBox('caption', string)</span><span class="typization">Arguments: text of caption</span>
+	<span class="description">Set new caption in window header</span>
+	<span class="definition">object.mBox('icon', string)</span><span class="typization">Arguments: path to image</span>
+	<span class="description">Set new icon in window header</span>
+	<span class="definition">object.mBox('expand')</span><span class="typization">Arguments: none</span>
+	<span class="description">Expand window is it's collapsed</span>
+	<span class="definition">object.mBox('collapse')</span><span class="typization">Arguments: none</span>
+	<span class="description">Collapse window is it's expanded</span>
+	<span class="definition">object.mBox('lock', string)</span><span class="typization">Argument: text message</span>
+	<span class="description">Lock content of window with defined text message. If text message is null, then will be used "lockText" value</span>
+	<span class="definition">object.mBox('unlock')</span><span class="typization">Argument: none</span>
+	<span class="description">Unlock content of window</span>
+
+	<div class="in-section-title">Events</div>
+	<span class="definition">onExpand()</span>
+	<span class="description">Triggered in mBox when window goes to expanded state</span>
+	<span class="definition">onCollapse()</span>
+	<span class="description">Triggered in mBox when window goes to collapsed state</span>
+</div>
+
+
+</body>
+</html>
+

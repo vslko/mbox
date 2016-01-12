@@ -1,0 +1,104 @@
+/*
+ * MBox v0.1 Stylesheet
+ *
+ * Copyright (c) 2013 Vasilij Olhov
+ * Dual licensed under the MIT and GPL licenses
+ */
+
+div.mbox-container {
+    font-family: Helvetica,Arial;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+
+/* ============== HEADER ============== */
+div.mbox-container div.mbox-header {
+    border: none;
+    position: relative;
+    background-image: url('./mbox_header.png');
+    background-repeat: x-repeat;
+    background-position: top left;
+    height: 24px;
+    text-align: left;
+    -webkit-border-radius: 7px 7px 0 0 ;
+    -moz-border-radius: 7px 7px 0 0;
+    border-radius: 7px 7px 0px 0px;
+}
+div.mbox-container div.mbox-header.collapsed {
+    -webkit-border-radius: 7px !important;
+    -moz-border-radius: 7px !important;
+    border-radius: 7px !important;
+}
+div.mbox-container div.mbox-header div.caption {
+    float: left;
+    margin-left:6px;
+    font-size: 12px;
+    line-height: 22px;
+    color:#F9F4E1;
+    font-weight: bold;
+    white-space: nowrap;
+}
+div.mbox-container div.mbox-header div.caption.iconized {
+    background-image: none;
+    padding-left: 20px;
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+div.mbox-container div.mbox-header div.control {
+    float:right;
+    margin:4px;
+    height: 16px;
+    width: 16px;
+    background-image: url(./mbox_collapse.png);
+    background-repeat: no-repeat;
+    cursor: pointer; *cursor:hand;
+}
+div.mbox-container div.mbox-header div.control.collapsed { background-position: 0 -16px;}
+div.mbox-container div.mbox-header div.control.expanded { background-position: 0 0; }
+
+
+
+
+/* ============== BODY ============== */
+div.mbox-container div.mbox-body {
+    position: relative;
+    text-align: justify;
+    color: #64564B;
+    background-color: #F6F2DE;
+    border: 1px solid #9A8C7F;
+    border-top: none;
+    direction: ltr;
+    padding: 6px;
+    padding-top: 8px;
+    z-index: 1;
+    -webkit-border-radius: 0px 0px 7px 7px;
+    -moz-border-radius: 0px 0px 7px 7px;
+    border-radius: 0px 0px 7px 7px;
+}
+
+
+
+
+/* ============== PROGRESSBAR ============== */
+div.mbox-container div.mbox-progress {
+    position: absolute !important;
+    text-align: center;
+    background-color: #FFF;
+    opacity: .7;
+    filter: alpha(opacity=70);
+    z-index: 2;
+    -webkit-border-radius: 0px 0px 7px 7px;
+    -moz-border-radius: 0px 0px 7px 7px;
+    border-radius: 0px 0px 7px 7px;
+}
+div.mbox-container div.mbox-progress-message {
+    background-image: url('./loading.gif');
+    background-repeat: no-repeat;
+    background-position: top center;
+	color: #111;
+	font-weight: bold;
+}
+
